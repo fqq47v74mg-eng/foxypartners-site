@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apply / Contact — FoxyPartners</title>
+<meta name="description" content="Apply to FoxyPartners affiliate programme. Contact our team on Telegram @FoxyPartnersBot or email partners@foxypartners.com. 24-hour approval.">
+<meta name="theme-color" content="#FF6B2B">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@85..120,400..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 100 100" role="img" aria-label="FoxyPartners logo">
+        <rect width="100" height="100" rx="22" fill="#0F0F1A"/>
+        <polygon points="50,10 80,40 50,75 20,40" fill="#FF6B2B"/>
+        <polygon points="50,10 80,40 50,40" fill="#CC3D00" opacity=".7"/>
+        <circle cx="35" cy="28" r="7" fill="#FF6B2B"/>
+        <circle cx="65" cy="28" r="7" fill="#FF6B2B"/>
+        <circle cx="27" cy="42" r="6" fill="#FF6B2B"/>
+        <circle cx="73" cy="42" r="6" fill="#FF6B2B"/>
+      </svg>
+      <span class="brand__name">Foxy<b>Partners</b></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="programs.html">Commission Plans</a>
+      <a href="influencers.html">Influencers</a>
+      <a href="models.html">Models</a>
+      <a href="brands.html">Our Brands</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a class="btn btn--flame btn--sm hdr__cta" href="contact.html">Apply Now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="phead">
+  <div class="wrap phead__in">
+    <p class="crumbs"><a href="index.html">Home</a> / Apply &amp; Contact</p>
+    <p class="eyebrow">24-hour approval</p>
+    <h1 class="h-lg">Apply to FoxyPartners.</h1>
+    <p class="lede">Fill in the form below or message us directly on Telegram. We review every application personally and respond within 24 hours.</p>
+  </div>
+</section>
+
+<!-- ========== FORM + CONTACT ========== -->
+<section class="section">
+  <div class="wrap split split--wide" style="align-items:start">
+
+    <!-- Application Form -->
+    <div>
+      <h2 class="h-md" style="margin-bottom:28px">Partner application</h2>
+      <form class="form" id="apply-form" novalidate>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Your first name" required>
+          </div>
+          <div class="field">
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Your last name" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="telegram">Telegram handle (optional)</label>
+          <input type="text" id="telegram" name="telegram" placeholder="@yourtelegram">
+        </div>
+
+        <div class="field">
+          <label for="partner-type">I am a…</label>
+          <select id="partner-type" name="partner_type" required>
+            <option value="" disabled selected>Select your partner type</option>
+            <option value="affiliate">Affiliate / Publisher (SEO, paid media, email)</option>
+            <option value="influencer">Influencer / Content Creator</option>
+            <option value="model">Model / Adult Content Creator</option>
+            <option value="agency">Agency (multiple publishers or models)</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="website">Website, channel or social profile URL</label>
+          <input type="url" id="website" name="website" placeholder="https://your-site.com or @handle">
+        </div>
+
+        <div class="field">
+          <label for="traffic-type">Main traffic source</label>
+          <select id="traffic-type" name="traffic_type" required>
+            <option value="" disabled selected>Select traffic type</option>
+            <option value="seo">Organic SEO</option>
+            <option value="social">Social media / influencer</option>
+            <option value="paid">Paid media (native, display, push)</option>
+            <option value="email">Email marketing</option>
+            <option value="model">Adult content / model audience</option>
+            <option value="stream">Live streaming (Twitch, YouTube Live)</option>
+            <option value="direct">Direct / community</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="geo">Main GEO(s)</label>
+            <input type="text" id="geo" name="geo" placeholder="e.g. DE, CA, AU">
+          </div>
+          <div class="field">
+            <label for="volume">Monthly FTDs (approx)</label>
+            <select id="volume" name="volume">
+              <option value="" disabled selected>Select volume</option>
+              <option value="0-10">0–10 FTDs / month</option>
+              <option value="10-50">10–50 FTDs / month</option>
+              <option value="50-200">50–200 FTDs / month</option>
+              <option value="200-500">200–500 FTDs / month</option>
+              <option value="500+">500+ FTDs / month</option>
+              <option value="new">New to iGaming affiliate</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="preferred-model">Preferred commission model</label>
+          <select id="preferred-model" name="preferred_model">
+            <option value="" disabled selected>Select preference</option>
+            <option value="cpa">CPA — fixed per FTD</option>
+            <option value="revshare">Revenue Share — % of NGR</option>
+            <option value="hybrid">Hybrid — CPA + RevShare</option>
+            <option value="flexible">Flexible — discuss with AM</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Anything else? (optional)</label>
+          <textarea id="message" name="message" placeholder="Tell us anything that will help us set you up faster — current programmes you work with, specific GEOs or brands of interest, custom requests…"></textarea>
+        </div>
+
+        <p class="form__note">By submitting, you confirm you are 18+ and agree to our Terms of Service and Privacy Policy. We will respond to your application within 24 hours via email or Telegram.</p>
+
+        <div>
+          <button type="submit" class="btn btn--flame" style="width:100%;justify-content:center;padding:18px">
+            Submit Application
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Contact sidebar -->
+    <div class="stack" style="position:sticky;top:90px">
+      <div class="info-box">
+        <h3 style="font-size:18px;margin-bottom:4px">Prefer Telegram?</h3>
+        <p style="font-size:14px;color:var(--fg-2);margin:12px 0 20px">Message us directly. Our team responds fastest on Telegram — typically within a few hours.</p>
+        <a class="btn btn--flame" href="https://t.me/FoxyPartnersBot" style="width:100%;justify-content:center">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:16px;height:16px"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.16 13.9l-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.99.659z"/></svg>
+          Open @FoxyPartnersBot
+        </a>
+      </div>
+
+      <div class="info-box">
+        <h3 style="font-size:16px;margin-bottom:16px">Other contacts</h3>
+        <div class="info-row">
+          <span class="info-row__label">General enquiries</span>
+          <span class="info-row__val" style="font-size:13px"><a href="mailto:partners@foxypartners.com" style="color:var(--orange)">partners@foxypartners.com</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-row__label">Telegram bot</span>
+          <span class="info-row__val" style="font-size:13px"><a href="https://t.me/FoxyPartnersBot" style="color:var(--orange)">@FoxyPartnersBot</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-row__label">Parent company</span>
+          <span class="info-row__val" style="font-size:13px"><a href="https://foxymedia.io" style="color:var(--orange)">foxymedia.io</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-row__label">Response time</span>
+          <span class="info-row__val">Within 24 hours</span>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3 style="font-size:16px;margin-bottom:12px">What happens after you apply</h3>
+        <div class="steps" style="border-top:none">
+          <div style="padding:12px 0;border-bottom:1px solid var(--border)">
+            <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:4px">Within 24h</p>
+            <p style="font-size:14px;color:var(--fg-2)">AM reviews your application and gets in touch via email or Telegram</p>
+          </div>
+          <div style="padding:12px 0;border-bottom:1px solid var(--border)">
+            <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:4px">Day 2</p>
+            <p style="font-size:14px;color:var(--fg-2)">Account setup, tracking link, and commission plan confirmed</p>
+          </div>
+          <div style="padding:12px 0">
+            <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:4px">Day 3+</p>
+            <p style="font-size:14px;color:var(--fg-2)">Start driving traffic and watching real-time stats on your dashboard</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="brand" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 100 100" role="img" aria-label="FoxyPartners">
+            <rect width="100" height="100" rx="22" fill="#0F0F1A"/>
+            <polygon points="50,10 80,40 50,75 20,40" fill="#FF6B2B"/>
+            <polygon points="50,10 80,40 50,40" fill="#CC3D00" opacity=".7"/>
+            <circle cx="35" cy="28" r="7" fill="#FF6B2B"/>
+            <circle cx="65" cy="28" r="7" fill="#FF6B2B"/>
+            <circle cx="27" cy="42" r="6" fill="#FF6B2B"/>
+            <circle cx="73" cy="42" r="6" fill="#FF6B2B"/>
+          </svg>
+          <span class="brand__name">Foxy<b>Partners</b></span>
+        </a>
+        <p class="foot__about">Where affiliates, influencers and models earn more. iGaming and adult offers — CPA, RevShare, Hybrid. Net-15 payouts. 40+ GEOs.</p>
+      </div>
+      <div>
+        <h4>Programme</h4>
+        <ul>
+          <li><a href="programs.html">Commission Plans</a></li>
+          <li><a href="influencers.html">Influencers</a></li>
+          <li><a href="models.html">Models</a></li>
+          <li><a href="brands.html">Our Brands</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="contact.html">Apply Now</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://foxymedia.io">FoxyMedia</a></li>
+          <li><a href="mailto:partners@foxypartners.com">partners@foxypartners.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Responsible Gaming</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bar">
+      <span>&copy; <span data-year>2026</span> FoxyPartners · FoxyMedia Ltd. All rights reserved.</span>
+      <a href="https://t.me/FoxyPartnersBot">Telegram</a>
+      <a href="https://foxymedia.io">FoxyMedia</a>
+      <span class="foot__legal">18+ | Gambling can be addictive. Play responsibly.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
