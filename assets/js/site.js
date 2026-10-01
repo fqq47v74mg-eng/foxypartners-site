@@ -37,18 +37,25 @@ document.querySelectorAll('[data-year]').forEach(el => {
   el.textContent = new Date().getFullYear();
 });
 
-// Ticker animation — subtle pulsing numbers
+// Ticker animation — live nudge with directional colour flash
 (function () {
   const metrics = document.querySelectorAll('[data-metric]');
   if (!metrics.length) return;
   metrics.forEach(el => {
-    const base = parseInt(el.dataset.metric, 10);
-    setInterval(() => {
-      const delta = (Math.random() - 0.3) * base * 0.03;
-      const newVal = Math.max(base * 0.8, Math.round(base + delta));
+    let current = parseInt(el.dataset.metric, 10);
+    const base = current;
+    const update = () => {
+      const delta = (Math.random() - 0.38) * base * 0.04;
+      const going_up = delta > 0;
+      current = Math.max(base * 0.75, current + delta);
       const prefix = el.dataset.prefix ? '$' : '';
-      el.textContent = prefix + newVal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }, 3400 + Math.random() * 2000);
+      el.textContent = prefix + current.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      el.classList.remove('ticker-flash-up', 'ticker-flash-down');
+      void el.offsetWidth; // reflow to restart animation
+      el.classList.add(going_up ? 'ticker-flash-up' : 'ticker-flash-down');
+      setTimeout(update, 4000 + Math.random() * 1200);
+    };
+    setTimeout(update, 2000 + Math.random() * 3000);
   });
 })();
 
