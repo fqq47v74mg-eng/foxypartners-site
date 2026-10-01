@@ -109,17 +109,74 @@ document.querySelectorAll('.card, .pillar, .step, .tl-step, .testi').forEach(el 
   els.forEach(el => obs.observe(el));
 })();
 
-// Apply form submit (dummy)
+// Apply form submit — Formspree
 (function () {
   const form = document.getElementById('apply-form');
   if (!form) return;
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = form.querySelector('[type=submit]');
+    const originalText = btn.innerHTML;
     btn.disabled = true;
-    btn.textContent = 'Sending…';
-    setTimeout(() => {
-      form.innerHTML = `<div class="card" style="text-align:center;padding:40px"><div style="font-size:48px;margin-bottom:16px">🎉</div><h3>Application received!</h3><p style="margin-top:12px;color:var(--fg-2)">Your dedicated affiliate manager will be in touch within 24 hours. You can also reach us on Telegram: <a href="https://t.me/FoxyPartnersBot">@FoxyPartnersBot</a></p></div>`;
-    }, 1200);
+    btn.innerHTML = 'Sending…';
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://formspree.io/f/xwkgpvnq', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.innerHTML = `<div class="card" style="text-align:center;padding:48px 32px"><div style="font-size:56px;margin-bottom:20px">🎉</div><h3 style="margin-bottom:12px">Application received!</h3><p style="color:var(--fg-2);max-width:48ch;margin-inline:auto">Your dedicated AM will be in touch within 24 hours via email or Telegram. For faster response, message us directly at <a href="https://t.me/FoxyPartnersBot">@FoxyPartnersBot</a>.</p></div>`;
+      } else {
+        const json = await res.json().catch(() => ({}));
+        const msg = (json.errors || []).map(x => x.message).join(', ') || 'Submission error';
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        const err = form.querySelector('.form-error') || (() => {
+          const d = document.createElement('p');
+          d.className = 'form-error';
+          d.style.cssText = 'color:#f66;font-size:14px;margin-top:-8px;font-family:var(--mono)';
+          form.insertBefore(d, btn.parentElement);
+          return d;
+        })();
+        err.textContent = '⚠️ ' + msg + ' — please try again or contact us on Telegram.';
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+      const errEl = form.querySelector('.form-error') || (() => {
+        const d = document.createElement('p');
+        d.className = 'form-error';
+        d.style.cssText = 'color:#f66;font-size:14px;margin-top:-8px;font-family:var(--mono)';
+        form.insertBefore(d, btn.parentElement);
+        return d;
+      })();
+      errEl.textContent = '⚠️ Network error. Please try again or reach us on Telegram.';
+    }
   });
+})();
+
+// Smooth scroll for anchor links
+(function () {
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+
+// Back to top button
+(function () {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'Back to top');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  document.body.appendChild(btn);
+  const toggle = () => btn.classList.toggle('visible', window.scrollY > 400);
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
