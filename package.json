@@ -7,6 +7,7 @@
     "dev": "serve . -l 3000"
   },
   "dependencies": {
+    "http-server": "^14.1.1",
     "serve": "^14.2.3"
   }
 }
