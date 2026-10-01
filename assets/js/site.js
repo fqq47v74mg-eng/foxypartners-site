@@ -59,7 +59,37 @@ document.querySelectorAll('[data-year]').forEach(el => {
   });
 })();
 
-// Scroll-triggered fade-in
+// Animated counter on scroll
+function animateCounter(el, target, duration = 1800) {
+  const start = performance.now();
+  const isDecimal = String(target).includes('.');
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = isDecimal ? (target * ease).toFixed(1) : Math.round(target * ease);
+    el.textContent = el.dataset.prefix ? el.dataset.prefix + val : val + (el.dataset.suffix || '');
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('[data-count]').forEach(el => {
+      animateCounter(el, parseFloat(el.dataset.count));
+    });
+    io.unobserve(e.target);
+  });
+}, { threshold: .3 });
+document.querySelectorAll('.stats').forEach(el => io.observe(el));
+
+// Section reveal animations
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: .12 });
+document.querySelectorAll('.card, .pillar, .step, .tl-step, .testi').forEach(el => { el.classList.add('reveal'); revealObs.observe(el); });
+
+// Scroll-triggered fade-in (legacy, kept for compatibility)
 (function () {
   if (!window.IntersectionObserver) return;
   const els = document.querySelectorAll('.card, .pillar, .step, .stat__n');
