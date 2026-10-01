@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "FoxyPartners affiliate programme website",
   "scripts": {
-    "start": "serve . -p ${PORT:-3000} -s",
+    "start": "npx http-server . -p ${PORT:-3000} --cors -c-1",
     "dev": "serve . -l 3000"
   },
   "dependencies": {
