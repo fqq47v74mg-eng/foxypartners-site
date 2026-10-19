@@ -177,3 +177,44 @@ document.querySelectorAll('.card, .pillar, .step, .tl-step, .testi').forEach(el 
   window.addEventListener('scroll', toggle, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
+
+
+// Sticky apply bar — reveal once the hero CTA has scrolled away, hide over the
+// footer and over the application form itself.
+(function () {
+  const bar = document.querySelector('.applybar');
+  if (!bar) return;
+  const hero = document.querySelector('.hero, .phead') || document.body;
+  const stop = document.querySelector('.cta, footer, #apply');
+  const update = () => {
+    const past = hero.getBoundingClientRect().bottom < 0;
+    const atEnd = stop ? stop.getBoundingClientRect().top < window.innerHeight * 0.9 : false;
+    bar.setAttribute('data-show', String(past && !atEnd));
+  };
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+})();
+
+// Carry the plan or partner type chosen on a marketing page into the form,
+// so nobody re-picks what they already clicked.
+(function () {
+  const q = new URLSearchParams(location.search);
+  const map = { plan: 'preferred-model', type: 'partner-type', traffic: 'traffic-type' };
+  Object.entries(map).forEach(([param, id]) => {
+    const want = q.get(param);
+    if (!want) return;
+    const sel = document.getElementById(id);
+    if (!sel) return;
+    const opt = [...sel.options].find(o => o.value === want);
+    if (opt) { sel.value = want; sel.dispatchEvent(new Event('change', { bubbles: true })); }
+  });
+})();
+
+
+// Reveal safety net: if an observer never fires (older mobile browsers, a
+// background tab restored from bfcache), show everything after 2s rather than
+// leaving sections blank.
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+}, 2000);
