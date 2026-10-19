@@ -1,24 +1,43 @@
 /* FoxyPartners — site.js */
 
 // Mobile nav toggle
+// FIX: the menu rendered expanded on load at mobile widths because nothing set
+// `hidden` until the first click. sync() now runs on load and on resize.
 (function () {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('#site-nav');
   if (!toggle || !nav) return;
 
+  const mq = window.matchMedia('(max-width: 1000px)');
+  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+  const sync = () => { nav.hidden = mq.matches && !isOpen(); };
+
   toggle.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!expanded));
-    nav.hidden = expanded;
+    toggle.setAttribute('aria-expanded', String(!isOpen()));
+    sync();
   });
 
-  // Close on outside click
   document.addEventListener('click', (e) => {
-    if (!nav.hidden && !toggle.contains(e.target) && !nav.contains(e.target)) {
+    if (isOpen() && !toggle.contains(e.target) && !nav.contains(e.target)) {
       toggle.setAttribute('aria-expanded', 'false');
-      nav.hidden = true;
+      sync();
     }
   });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) {
+      toggle.setAttribute('aria-expanded', 'false'); sync(); toggle.focus();
+    }
+  });
+
+  nav.addEventListener('click', (e) => {
+    if (mq.matches && e.target.closest('a')) {
+      toggle.setAttribute('aria-expanded', 'false'); sync();
+    }
+  });
+
+  mq.addEventListener('change', sync);
+  sync();
 })();
 
 // Current-page nav highlight

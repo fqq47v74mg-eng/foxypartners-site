@@ -12,7 +12,7 @@
 
   --fg:           rgba(255,255,255,.90);
   --fg-2:         rgba(255,255,255,.56);
-  --fg-3:         rgba(255,255,255,.32);
+  --fg-3:         rgba(255,255,255,.48);
   --fg-4:         rgba(255,255,255,.14);
 
   --border:       rgba(255,255,255,.08);
@@ -213,7 +213,7 @@ p { margin: 0; }
 .btn:active { transform: scale(.97) translateY(0) !important; }
 .btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-.btn--flame {
+.btn--flame { color: #190600;
   background: linear-gradient(135deg, #FF6B2B 0%, #FF4500 100%) !important;
   border-color: transparent !important;
   --btn-fg: #fff;
